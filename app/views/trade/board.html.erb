@@ -513,7 +513,7 @@
                             <td>
                                 <%if p.user_id == current_user.id %>
                                     <button type="submit" class="btn btn-primary" onclick="button_event()" >거래 승인</button>
-                                <%elsif r.user == current_user%>
+                                <%elsif r.user_id == current_user.id%>
                                     <p>X</p>
                                 <%else%>
                                     <p>안녕</p>
