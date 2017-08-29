@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+  <!-- Bootstrap CDN -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+        @font-face{ font-family:'NanumGothic'; src:url('fonts/NanumGothicRegular.eot'); 
+        src:url('fonts/NanumGothicRegular.eot?#iefix') format(‘embedded-opentype’), 
+        url('fonts/NanumGothicRegular.woff') format(‘woff’), 
+        url('fonts/NanumGothicRegular.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+        @font-face{ font-family:'NanumGothic'; src:url('fonts/NanumGothicBold.eot'); src:url('fonts/NanumGothicBold.eot?#iefix') format(‘embedded-opentype’), url('fonts/NanumGothicBold.woff') format(‘woff’), url('fonts/NanumGothicBold.ttf') format('truetype'); font-weight: bold; font-style: normal; } @font-face{ font-family:'NanumGothic'; src:url('fonts/NanumGothicItalic.eot'); src:url('fonts/NanumGothicItalic.eot?#iefix') format(‘embedded-opentype’), url('fonts/NanumGothicItalic.woff') format(‘woff’), url('fonts/NanumGothicItalic.ttf') format('truetype'); font-weight: normal; font-style: italic; }
+
+        body{ font-family: NanumGothicBold; font-style: normal; font-weight: normal; }
+
+
+    </style>
+
+
+
+</head>
+
+<!-- 배경 색, 글씨 체 추가 -->
+<body style="background-color:#c4ecf6;" font-family="나눔고딕, NanumGothic, ng">
+    <!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="/index" onclick=$("#menu-close").click();><img src="../logo_simple.png" width=50px, height=50px></a>
+            </li>
+            
+            <li>
+                <a href="/index" onclick=$("#menu-close").click();>메인 페이지</a>
+            </li>
+            <li>
+                <a href="/index2" onclick=$("#menu-close").click();>대륙 별 거래</a>
+            </li>
+            <li>
+                <a href="/trade/create" onclick=$("#menu-close").click();>거래 글 올리기</a>
+            </li>
+            <li>
+                <a href="/crawler/index" onclick=$("#menu-close").click();>환율 모두 보기</a>
+            </li>
+            <li>
+                <a href="/mypage/info" onclick=$("#menu-close").click();>마이페이지</a>
+            </li>
+        </ul>
+        </nav>
+        <nav style="margin-left:20px;">
+            <a href="/index"><img src="../logo_simple.png" style="height:80px; margin-top:10px;"></a>
+        </nav>  
+        
+        <script src="/js/one.js"></script>
+        
+<%= yield %>
+
+</body>
+</html>

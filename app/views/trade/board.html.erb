@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>대륙별 거래 > 게시판</title>
+            <!--<head>-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+         <!-- Bootstrap Core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="../css/stylish-portfolio.css" rel="stylesheet">
+        
+         <!-- Custom Fonts -->
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css">
+      
+      <!--전체선택-->
+          <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script> 
+          <script type="text/javascript"> 
+          $(function(){ //전체선택 체크박스 클릭 
+          $("#all").click(function(){ //만약 전체 선택 체크박스가 체크된상태일경우 
+          if($("#all").prop("checked")) { //해당화면에 전체 checkbox들을 체크해준다 
+          $("input[type=checkbox]").prop("checked",true); // 전체선택 체크박스가 해제된 경우 
+          } else { //해당화면에 모든 checkbox들의 체크를해제시킨다. 
+          $("input[type=checkbox]").prop("checked",false); } }) }) </script>
+    
+    
+        <style>
+            input[type=radio] + label {
+                color: black;
+            } 
+            input[type=radio]:checked + label {
+                color: blue;
+            } 
+            
+        
+            label.uni{
+                font: 16px courier;
+            }
+            td {
+                padding-right: 5px;
+            }
+            
+            #scroll {height:30px;}
+       </style>
+       
+       
+       
+
+
+    </head>
+    <body style="background-color:#c4ecf6;">
+        <!-- Navigation -->
+        <!--<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>-->
+        <!--<nav id="sidebar-wrapper">-->
+        <!--    <ul class="sidebar-nav">-->
+        <!--        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>-->
+        <!--        <li class="sidebar-brand">-->
+        <!--            <a href="/index" onclick=$("#menu-close").click();><img src="../logo_simple.png" width=50px, height=50px></a>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--            <a href="/index" onclick=$("#menu-close").click();>메인 페이지</a>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--            <a href="/index2" onclick=$("#menu-close").click();>대륙 별 거래</a>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--            <a href="/trade/create" onclick=$("#menu-close").click();>거래 글 올리기</a>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--            <a href="/crawler/index" onclick=$("#menu-close").click();>환율 모두 보기</a>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--            <a href="/mypage/info" onclick=$("#menu-close").click();>마이페이지</a>-->
+        <!--        </li>-->
+        <!--    </ul>-->
+        <!--</nav>-->
+        <!--<nav style="margin-left:20px;">-->
+        <!--    <a href="/index"><img src="../logo_simple.png" style="height:80px; margin-top:10px;"></a>-->
+        <!--</nav>-->
+
+    
+        <div class="container">
+            <div class="col-md-12">
+                <div class="panel panel-primary" >
+                    <div class="panel-heading">
+                        <h4>거래 글 보기</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form action="">
+                            <div class="col-md-12">
+                                <br>
+                                <br>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <label>거래 가능 대학(*복수 선택 가능)</label> 
+                                
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="전체보기" value="전체보기" style="display:none;">
+                                                <label for="전체보기" class="uni">
+                                                     전체보기
+                                                </label>
+                                            </p>
+                                        </td>
+                                        
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="KC대" value="KC대" style="display:none;">
+                                                <label for="KC대" class="uni">
+                                                     KC대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="가톨릭대(성신)" value="가톨릭대(성신)" style="display:none;">
+                                                <label for="가톨릭대(성신)" class="uni">
+                                                     가톨릭대(성신)
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="가톨릭대(성의)" value="가톨릭대(성의)" style="display:none;">
+                                                <label for="가톨릭대(성의)" class="uni">
+                                                     가톨릭대(성의)
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="감리교신학대" value="감리교신학대" style="display:none;">
+                                                <label for="감리교신학대" class="uni">
+                                                     감리교신학대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <label for="건국대" class="uni">
+                                                <input type="radio" name="uni" id="건국대" value="건국대" style="display:none;">
+                                                     건국대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="경기대(서울)" value="경기대(서울)" style="display:none;">
+                                                <label for="경기대(서울)" class="uni">
+                                                     경기대(서울)
+                                                </label>
+                                            </p>
+                                        </td>
+                                        
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="경희대" value="경희대" style="display:none;">
+                                                <label for="경희대" class="uni">
+                                                        경희대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="고려대" value="고려대" style="display:none;">
+                                                <label for="고려대" class="uni">
+                                                        고려대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="광운대" value="광운대" style="display:none;">
+                                                <label for="광운대" class="uni">
+                                                     광운대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="국민대" value="국민대" style="display:none;">
+                                                <label for="국민대" class="uni">
+                                                     국민대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="덕성여대" value="덕성여대" style="display:none;">
+                                                <label for="덕성여대" class="uni">
+                                                     덕성여대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="동국대" value="동국대" style="display:none;">
+                                                <label for="동국대" class="uni">
+                                                     동국대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="동덕여대" value="동덕여대" style="display:none;">
+                                                <label for="동덕여대" class="uni">
+                                                     동덕여대
+                                                </label>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="디지털서울문화예술대" value="디지털서울문화예술대" style="display:none;">
+                                                <label for="디지털서울문화예술대" class="uni">
+                                                        디지털서울문화예술대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="명지대" value="명지대" style="display:none;">
+                                                <label for="명지대" class="uni">
+                                                        명지대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="삼육대" value="삼육대" style="display:none;">
+                                                <label for="삼육대" class="uni">
+                                                     삼육대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="상명대" value="상명대" style="display:none;">
+                                                <label for="상명대" class="uni">
+                                                     상명대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="서강대" value="서강대" style="display:none;">
+                                                <label for="서강대" class="uni">
+                                                     서강대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="서경대" value="서경대" style="display:none;">
+                                                <label for="서경대" class="uni">
+                                                     서경대
+                                                </label>
+                                            </p>
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="서울과기대" value="서울과기대" style="display:none;">
+                                                <label for="서울과기대" class="uni">
+                                                     서울과기대
+                                                </label>
+                                            </p>
+                                        </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <p>
+                                            <input type="radio" name="uni" id="서울교대" value="서울교대" style="display:none;">
+                                            <label for="서울교대" class="uni">
+                                                서울교대
+                                            </label>
+                                        </p>
+                                    </td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <p>
+                                            <input type="radio" name="uni" id="서울기독대" value="서울기독대" style="display:none;">
+                                            <label for="서울기독대" class="uni">
+                                                 서울기독대
+                                            </label>
+                                        </p>
+                                    </td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <p>
+                                            <input type="radio" name="uni" id="서울대" value="서울대" style="display:none;">
+                                            <label for="서울대" class="uni">
+                                                 서울대
+                                            </label>
+                                        </p>
+                                    </td>
+                                    <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <p>
+                                                <input type="radio" name="uni" id="KAIST(서울)" value="KAIST(서울)" style="display:none;">
+                                                <label for="KAIST(서울)" class="uni">
+                                                        KAIST(서울)
+                                                </label>
+                                            </p>
+                                        </td>
+                                </tr>
+                                    
+                            </table>
+                                
+                          
+                            </div> 
+                            
+                            <div class="col-md-12">
+                                <br>
+                                <br>
+                            </div>
+                            
+                            <div class="col-md-12" align="right">
+                                <button type="submit" class="btn btn-primary" id="search">검색하기</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+            
+            
+            <table class="table table-striped" id="user-table">
+                <thead>
+                    <th>#</th>
+                    <th>
+                        목록
+                    </th>
+                    <th>거래하기</th>
+                </thead>
+                <tbody>
+                    
+                    <script>
+                    var u = document.getElementsByName('uni');
+                    for (var i = 0; i < u.length; i++) {
+                        var x = "";
+                        x += (u[i].value);
+                    }
+                    </script>
+                 
+                    <% @posts.each do |p| %>
+                    
+                    <%= p.unis %> == &{x};
+                    
+                    <tr style="font-family: 'Nanum Gothic';">
+                        <td><%= p.id %></td>
+                        
+                        <td>                        
+                        거래 외화 : <%= p.money %><br>
+                        거래 금액 : <%= p.content %><br>
+                        거래 가능 학교 : <%= p.unis %><br>
+                        거래 올린 날짜 : <%= p.created_at.to_date %>
+                        <%= p.id %> <%= p.id %>
+                        </td>
+                        
+                        <td>
+                            
+                            <button class="btn btn-primary" type="button" data-toggle="collapse<%= p.id %>" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                거래 전
+                             </button>
+                       
+                            <div class="collapse<%= p.id %>" id="collapseExample">
+                              <div class="card card-body">
+                                  <form action="/trade/reply_write" method="POST">
+                                  <div class="form-group">
+                                      <input type="hidden" name="post_id" value='<%= p.id %>'>
+
+                                      <%= p.id %>
+                                    <label for="recipient-name" class="form-control-label">거래 금액</label>
+                                    <input type="text" name="trade_money" class="form-control" id="recipient-name">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="message-text" class="form-control-label">메시지</label>
+                                    <textarea class="form-control" name="trade_mes" id="message-text"></textarea>
+                                  </div>
+                                  
+                                <button type="reset" class="btn btn-secondary">Close</button>
+                                <button type="submit" class="btn btn-primary" >거래 신청</button>
+                              </form>
+                            </div>
+                        </td>
+                      
+                    
+                    </tr>    
+                    
+                        <% p.replies.each do |r| %>
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└></td>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;거래 신청 금액 : <%= r.trade_money %><br>
+                                &nbsp;&nbsp;&nbsp;메시지 : <%= r.trade_mes %>
+                            </td>
+                            <td>
+                                <%if p.user_id == current_user.id %>
+                                    <button type="submit" class="btn btn-primary" onclick="button_event()" >거래 승인</button>
+                                <%elsif r.user == current_user%>
+                                    <p>X</p>
+                                <%else%>
+                                    <p>안녕</p>
+                                <%end%>
+                            </td>
+                           
+                        </tr>
+                        <% end %>
+                    
+                    
+                    <!--팝업창-->
+                    
+                    <script type="text/javascript">
+                    var kakao_id = <%= p.content %>
+                    function button_event(){
+                        if (confirm("상대방의 카카오톡 아이디는 :  " +  <%= p.content %>)){    //확인
+                             document.getElementById("trade_state").value = "거래중"
+                        }
+                    }
+                    </script>
+                    
+                    <% end %>
+
+                 
+                    
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+        
+        
+         <!-- jQuery -->
+        <script src="/js/jquery.js"></script>
+    
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/js/bootstrap.min.js"></script>
+
+        <!--<script src="/js/one.js"></script>-->
+        
+        
+        
+    </body>
+</html>

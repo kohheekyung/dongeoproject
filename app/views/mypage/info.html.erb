@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+     
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        <!-- Bootstrap Core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="../css/stylish-portfolio.css" rel="stylesheet">
+        
+         <!-- Custom Fonts -->
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+       
+        
+        <style>
+            body{
+                background-color:#c4ecf6;
+            }
+            
+            /*거래 중css*/
+            .deal{
+                padding-top: 16px;
+                margin: 10px;
+            }
+            .quick-btn {
+                position: relative;
+                display: inline-block;
+                width: 90px;
+                height: 80px;
+                padding-top: 16px;
+                margin: 10px;
+                color: #444444;
+                text-align: center;
+                text-decoration: none;
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+                -webkit-box-shadow: 0 0 0 1px #F8F8F8 inset, 0 0 0 1px #CCCCCC;
+                box-shadow: 0 0 0 1px #F8F8F8 inset, 0 0 0 1px #CCCCCC;
+                }
+            .quick-btn .label {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                }
+             .btn-metis-4 {
+                color: #ffffff;
+                background-color: #a264e7;
+                border-color: #62309a;
+                }
+                
+        </style>
+        <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style ="background-color:#c4ecf6;">
+   
+       
+    <div class="container">
+         <h2>My page</h2>
+   
+      <!--회원가입 확인-->
+    <% if user_signed_in? %>
+    
+    <!--프로필-->
+    <section class="user profile" style="padding-top: 16px; ">
+        <div class="col-12 col-lg-6 offset-xl-2 col-xl-4 d-flex flex-row">
+            <div class="col-9 d-flex flex-column justify-content-center">
+                <p> <%= current_user.name %>님&nbsp;&nbsp;
+                    <a href="/users/edit"><img src="../editicon.png"></a>
+                </p>
+                <p><%= current_user.email %></p>
+                <p><img src="../kakao.png"> <%= current_user.kakao %> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                    <%= link_to '로그아웃', destroy_user_session_path, method: 'delete' %>
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!--요기서부터 거래올리는 코드--> 
+        <div>
+          <ul class="nav nav-tabs">
+            <li class="active">
+                     <a class="quick-btn" data-toggle="tab" href="#home">
+                        <i class="fa fa-money" aria-hidden="true"></i><br/>
+                        <span>게시한 글</span>
+                        <span class="label label-danger"><%= @posts.count %></span>
+                    </a>
+            </li>
+            <li>
+                    <a class="quick-btn" data-toggle="tab" href="#menu1">
+                        <i class="fa fa-money" aria-hidden="true"></i><br/>
+                        <span>진행중인 거래</span>
+                        <span class="label label-success">4</span>
+                    </a>
+            </li>
+            <li>
+                    <a class="quick-btn" data-toggle="tab" href="#menu2">
+                        <i class="fa fa-money" aria-hidden="true"></i><br/>
+                        <span>완료된 거래</span>
+                        <span class="label label-warning">7</span>
+                    </a>
+            </li>
+            <li>
+                    <a class="quick-btn" data-toggle="tab" href="#menu3">
+                        <i class="fa fa-money" aria-hidden="true"></i><br/>
+                        <span>거래 신청</span>
+                        <span class="label btn-metis-4">10</span>
+                    </a>
+            </li>
+            <!--디자인별로면걍이거 -->
+            <!--<li class="active"><a data-toggle="tab" href="#home"> 게시한 거래</a></li>-->
+            <!--<li><a data-toggle="tab" href="#menu1">진행중인 거래</a></li>-->
+            <!--<li><a data-toggle="tab" href="#menu2">완료된 거래</a></li>-->
+            <!--<li><a data-toggle="tab" href="#menu3">거래 신청</a></li>-->
+          </ul>
+        
+          <div class="tab-content">
+            <!--게시한 글-->
+            <div id="home" class="tab-pane fade in active">
+              <h3>게시한 거래</h3>
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>게시 날짜</th>
+                        <th>외화</th>
+                        <th>금액</th>
+                        <th>학교</th>
+                        <th>거래글 삭제</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <% @posts.each do |p| %>
+                    <tr>
+                        <td><%= p.created_at.strftime("%F") %></td>
+                        <td><%= p.money %></td> 
+                        <td><%= p.content %></td>
+                        <td><%= p.unis %></td>
+                        <td><a href="/trade/destroy/<%=p.id%>" data-confirm="게시글이 삭제됩니다.">X</a></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+                </table>
+            </div>
+            <!--거래중 글-->
+            <div id="menu1" class="tab-pane fade">
+              <h3>진행중인 거래</h3>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <!--완료된 글-->
+            <div id="menu2" class="tab-pane fade">
+              <h3>완료된 거래</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+            </div>
+            <!--거래 신청-->
+            <div id="menu3" class="tab-pane fade">
+              <h3>거래 신청</h3>
+              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+          </div>
+        </div>
+        
+      
+        <%end%>
+    </div>
+</body>
+</html>
+
